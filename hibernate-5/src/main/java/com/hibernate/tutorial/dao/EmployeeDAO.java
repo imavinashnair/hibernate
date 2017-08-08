@@ -1,7 +1,8 @@
 package com.hibernate.tutorial.dao;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -9,30 +10,40 @@ import com.hibernate.tutorial.entity.Employee;
 
 @Repository
 public class EmployeeDAO {
-	
+
 	@Autowired
-	Session session;
+	EntityManagerFactory entityManagerFactory;
 
 	public void save(Employee employee) {
-		Transaction transaction = session.beginTransaction();
-		session.save(employee);
-		transaction.commit();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.persist(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
-	
-	public void saveOrUpdate(Employee employee) {
-		Transaction transaction = session.beginTransaction();
-		session.saveOrUpdate(employee);
-		transaction.commit();
+
+	public void deleteById(long id) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		Employee employee = (Employee) entityManager.find(Employee.class, id);
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
 	
 	public void delete(Employee employee) {
-		Transaction transaction = session.beginTransaction();
-		session.delete(employee);
-		transaction.commit();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.remove(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
 	}
-	
+
 	public Employee get(long id) {
-		return (Employee)session.get(Employee.class, id);
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		Employee employee = (Employee) entityManager.find(Employee.class, 1L);
+		entityManager.close();
+		return employee;
 	}
-	
+
 }
