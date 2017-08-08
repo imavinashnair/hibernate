@@ -16,8 +16,8 @@ public class EmployeeService {
 		employeeDao.save(employee);
 	}
 	
-	public void saveOrUpdate(Employee employee) {
-		employeeDao.saveOrUpdate(employee);
+	public void deleteById(long id) {
+		employeeDao.deleteById(id);
 	}
 	
 	public void delete(Employee employee) {
