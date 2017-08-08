@@ -20,7 +20,7 @@ public class App {
 		
 		Employee emp = new Employee();
 		emp.setId(new Long(1));
-		emp.setEmployeeName("Avinash Nair");
+		emp.setEmployeeName("Nishant Nair");
 		emp.setEmployeeAddress("Mumbai, India");
 		session.save(emp);
 		tx.commit();
