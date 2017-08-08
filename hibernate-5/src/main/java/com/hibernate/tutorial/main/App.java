@@ -4,8 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.hibernate.tutorial.entity.Employee;
+import com.hibernate.tutorial.service.EmployeeService;
 import com.hibernate.tutorial.util.HibernateUtil;
-import com.hibernate.tutorials.service.EmployeeService;
 
 public class App {
 
@@ -19,6 +19,7 @@ public class App {
 		emp.setId(new Long(1));
 		emp.setEmployeeName("Nishant Nair");
 		emp.setEmployeeAddress("Mumbai1, India");
+		
 		employeeService.save(emp);
 		employeeService.saveOrUpdate(emp);
 		employeeService.get(1L);
