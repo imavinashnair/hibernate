@@ -21,6 +21,14 @@ public class EmployeeDAO {
 		entityManager.getTransaction().commit();
 		entityManager.close();
 	}
+	
+	public void saveOrUpdate(Employee employee) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.merge(employee);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
 
 	public void deleteById(long id) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
