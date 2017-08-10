@@ -11,9 +11,9 @@ public class LoggingAspect {
 	
 	@Around("execution(* com.hibernate.tutorial.dao.*.*(..))")
 	public void logAroundDAO(ProceedingJoinPoint joinPoint) throws Throwable {
-		System.out.println("[start][" + joinPoint.getSignature().getDeclaringType().getName() + "][" + joinPoint.getSignature().getName() + "]");
+		System.out.println("********[method-start][" + joinPoint.getSignature().getDeclaringType().getSimpleName() + "." + joinPoint.getSignature().getName() + "]");
 		joinPoint.proceed();
-		System.out.println("[end][" + joinPoint.getSignature().getDeclaringTypeName() + "][" + joinPoint.getSignature().getName() + "]");
+		System.out.println("********[method-end][" + joinPoint.getSignature().getDeclaringType().getSimpleName() + "." + joinPoint.getSignature().getName() + "]");
 	}
 
 }

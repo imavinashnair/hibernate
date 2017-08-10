@@ -25,18 +25,15 @@ public class App {
 		emp1.setEmployeeName("Avinash Nair");
 		emp1.setEmployeeAddress("Mumbai, India");
 		
-		//System.out.println("Start of save/persist");
 		employeeService.save(emp);
-		//System.out.println("End of save/persist");
+		
 		
 		emp.setEmployeeName("Asha Nair");
-		//System.out.println("Start of saveOrUpdate/merge");
-		employeeService.saveOrUpdate(emp1);
-		//System.out.println("End of saveOrUpdate/merge");
-		
+		employeeService.saveOrUpdate(emp);
 		
 		employeeService.get(1L);
+
 		employeeService.deleteById(1L);
-		//employeeService.delete(emp);
+		
 	}
 }
