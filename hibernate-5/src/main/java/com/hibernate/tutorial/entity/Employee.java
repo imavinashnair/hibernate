@@ -1,27 +1,26 @@
 package com.hibernate.tutorial.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-@Table(name = "Employee")
-public class Employee {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name= "EmployeeType")
+public abstract class Employee extends Person{
 
 	@Id
 	@Column(name = "Id")
 	Long id;
 
-	@Column(name="Name")
-	String employeeName;
-
 	@Column(name="Address")
 	String employeeAddress;
 
-	public Employee(Long id, String employeeName, String employeeAddress) {
+	public Employee(Long id, String employeeAddress) {
 		this.id = id;
-		this.employeeName = employeeName;
 		this.employeeAddress = employeeAddress;
 	}
 
@@ -35,14 +34,6 @@ public class Employee {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getEmployeeName() {
-		return employeeName;
-	}
-
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
 	}
 
 	public String getEmployeeAddress() {

@@ -2,6 +2,8 @@ package com.hibernate.tutorial.util;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -23,7 +25,7 @@ public class DatabaseConfig {
 
 	@Autowired
 	private Environment env;
-
+	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
 		LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
