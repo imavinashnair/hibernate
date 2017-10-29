@@ -12,12 +12,12 @@ public class EmployeeService {
 	@Autowired
 	EmployeeDAO employeeDao;
 	
-	public void save(Employee employee) {
-		employeeDao.save(employee);
+	public void create(Employee employee) {
+		employeeDao.create(employee);
 	}
 	
-	public void saveOrUpdate(Employee employee) {
-		employeeDao.saveOrUpdate(employee);
+	public void update(Employee employee) {
+		employeeDao.update(employee);
 	}
 	
 	public void deleteById(long id) {
@@ -30,5 +30,9 @@ public class EmployeeService {
 	
 	public Employee get(long id) {
 		return employeeDao.get(id);
+	}
+	
+	public void close() {
+		employeeDao.close();
 	}
 }
